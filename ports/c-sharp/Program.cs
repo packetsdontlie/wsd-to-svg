@@ -171,6 +171,16 @@ class Program
         try
         {
             response = await httpClient.PostAsync(ApiUrl, formContent);
+            
+            // Check for specific error codes
+            if (response.StatusCode == System.Net.HttpStatusCode.PaymentRequired)
+            {
+                throw new HttpRequestException(
+                    "402 Payment Required: The websequencediagrams.com API requires payment or has reached rate limits. " +
+                    "Please check your account status or try again later."
+                );
+            }
+            
             response.EnsureSuccessStatusCode();
         }
         catch (HttpRequestException ex)
@@ -259,6 +269,7 @@ class Program
         }
     }
 }
+
 
 
 

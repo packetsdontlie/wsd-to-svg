@@ -57,6 +57,15 @@ def render_wsd_to_svg(
             timeout=timeout
         )
         response.raise_for_status()
+    except requests.HTTPError as e:
+        # Check for 402 Payment Required specifically
+        if e.response is not None and e.response.status_code == 402:
+            raise requests.RequestException(
+                "402 Payment Required: The websequencediagrams.com API requires payment or has reached rate limits. "
+                "Please check your account status or try again later."
+            )
+        else:
+            raise requests.RequestException(f"Failed to call websequencediagrams.com API: {e}")
     except requests.RequestException as e:
         raise requests.RequestException(f"Failed to call websequencediagrams.com API: {e}")
     
