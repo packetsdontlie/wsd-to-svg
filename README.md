@@ -4,8 +4,39 @@ A utility to render Web Sequence Diagram (`.wsd`) files to SVG using the websequ
 
 ## Installation
 
+### Using pip (Recommended)
+
+Install from the project directory:
+
+```bash
+pip install .
+```
+
+Or install in editable/development mode:
+
+```bash
+pip install -e .
+```
+
+After installation, you can use the `wsd-to-svg` command directly:
+
+```bash
+wsd-to-svg diagram.wsd -o diagram.svg
+```
+
+**Note:** If the `wsd-to-svg` command is not found after installation, you may need to add the Python user bin directory to your PATH, or use:
+
+```bash
+python3 -m wsd_to_svg diagram.wsd -o diagram.svg
+```
+
+### Manual Installation
+
+If you prefer to run the script directly:
+
 ```bash
 pip install -r requirements.txt
+python3 wsd_to_svg.py diagram.wsd -o diagram.svg
 ```
 
 ## Usage
@@ -13,26 +44,29 @@ pip install -r requirements.txt
 ### Basic Usage
 
 ```bash
-# Render WSD file to SVG
-python3 wsd-to-svg.py _docs/artifact-15--websequence-diagram.wsd -o _docs/artifact-15--websequence-diagram.svg
+# Render WSD file to SVG (after pip install)
+wsd-to-svg _docs/artifact-15--websequence-diagram.wsd -o _docs/artifact-15--websequence-diagram.svg
+
+# Or using Python directly (if not installed)
+python3 wsd_to_svg.py _docs/artifact-15--websequence-diagram.wsd -o _docs/artifact-15--websequence-diagram.svg
 
 # Output to stdout (for piping)
-python3 wsd-to-svg.py _docs/artifact-15--websequence-diagram.wsd > diagram.svg
+wsd-to-svg _docs/artifact-15--websequence-diagram.wsd > diagram.svg
 ```
 
 ### Options
 
 ```bash
 # Use different diagram style
-python3 wsd-to-svg.py diagram.wsd -o diagram.svg --style modern-blue
+wsd-to-svg diagram.wsd -o diagram.svg --style modern-blue
 
 # Available styles: default, napkin, qsd, rose, modern-blue, mscgen, vs2010
 
 # With API key (for premium features)
-python3 wsd-to-svg.py diagram.wsd -o diagram.svg --api-key YOUR_API_KEY
+wsd-to-svg diagram.wsd -o diagram.svg --api-key YOUR_API_KEY
 
 # Custom timeout
-python3 wsd-to-svg.py diagram.wsd -o diagram.svg --timeout 60
+wsd-to-svg diagram.wsd -o diagram.svg --timeout 60
 ```
 
 ## Examples
@@ -41,7 +75,7 @@ python3 wsd-to-svg.py diagram.wsd -o diagram.svg --timeout 60
 
 ```bash
 cd /Users/brucekiefer/projects/fvmirror
-python3 _tools/wsd-to-svg.py _docs/artifact-15--websequence-diagram.wsd \
+wsd-to-svg _docs/artifact-15--websequence-diagram.wsd \
   -o _docs/artifact-15--websequence-diagram.svg \
   --style modern-blue
 ```
@@ -51,7 +85,7 @@ python3 _tools/wsd-to-svg.py _docs/artifact-15--websequence-diagram.wsd \
 ```bash
 for wsd in _docs/*.wsd; do
   svg="${wsd%.wsd}.svg"
-  python3 _tools/wsd-to-svg.py "$wsd" -o "$svg"
+  wsd-to-svg "$wsd" -o "$svg"
 done
 ```
 
