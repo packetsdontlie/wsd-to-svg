@@ -84,4 +84,3 @@ The utility uses the websequencediagrams.com public API:
 ## License
 
 MIT
-
