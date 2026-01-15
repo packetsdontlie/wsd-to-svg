@@ -81,6 +81,12 @@ The utility uses the websequencediagrams.com public API:
 - Generated SVG URLs may expire after some time
 - Some styles may require premium subscription
 
+## Other Implementations
+
+This project also includes ports to other languages:
+
+- **C#/.NET**: See [ports/c-sharp/README.md](ports/c-sharp/README.md)
+
 ## License
 
 MIT
