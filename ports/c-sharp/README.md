@@ -4,7 +4,7 @@ A C#/.NET port of the WSD to SVG renderer utility. Renders Web Sequence Diagram 
 
 ## Requirements
 
-- .NET 8.0 SDK or later
+- .NET 10.0 SDK or later
 
 ## Building
 
@@ -73,7 +73,7 @@ dotnet publish -c Release -r linux-x64 --self-contained
 dotnet publish -c Release -r win-x64 --self-contained
 ```
 
-After publishing, the executable will be in `bin/Release/net8.0/[runtime]/publish/wsd-to-svg` (or `wsd-to-svg.exe` on Windows).
+After publishing, the executable will be in `bin/Release/net10.0/[runtime]/publish/wsd-to-svg` (or `wsd-to-svg.exe` on Windows).
 
 ## Examples
 
@@ -123,7 +123,7 @@ The utility uses the websequencediagrams.com public API:
 - Uses `System.CommandLine` for CLI argument parsing
 - Uses `HttpClient` for HTTP requests
 - Uses `System.Text.Json` for JSON parsing
-- Requires .NET 8.0 or later
+- Requires .NET 10.0 or later
 
 ## License
 
